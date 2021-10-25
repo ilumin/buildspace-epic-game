@@ -2,5 +2,8 @@
   "name": "builspace.so-epic-game",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "hardhat": "^2.6.7"
+  }
 }
