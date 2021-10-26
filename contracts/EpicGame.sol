@@ -21,6 +21,16 @@ contract EpicGame is ERC721 {
     uint attackDamage;
   }
 
+  struct BigBoss {
+    string name;
+    string imageURI;
+    uint hp;
+    uint maxHp;
+    uint attackDamage;
+  }
+
+  BigBoss public bigBoss;
+
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
@@ -34,10 +44,29 @@ contract EpicGame is ERC721 {
     string[] memory characterNames,
     string[] memory characterImageURIs,
     uint[] memory characterHp,
-    uint[] memory characterAttackDmg
+    uint[] memory characterAttackDmg,
+    string memory bigBossName,
+    string memory bigBossImageURI,
+    uint bigBossHp,
+    uint bigBossAttackDmg
   ) 
   ERC721("Heroes", "HERO") 
   {
+    bigBoss = BigBoss({
+      name: bigBossName,
+      imageURI: bigBossImageURI,
+      hp: bigBossHp,
+      maxHp: bigBossHp,
+      attackDamage: bigBossAttackDmg
+    });
+
+    console.log(
+      "Done initializing boss %s w/ HP %s, img %s",
+      bigBoss.name,
+      bigBoss.hp,
+      bigBoss.imageURI
+    );
+
     for (uint i = 0; i < characterNames.length; i++) {
       defaultCharacters.push(
         CharacterAttributes({
