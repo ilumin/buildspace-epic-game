@@ -151,4 +151,29 @@ contract EpicGame is ERC721 {
 
     return output;
   }
+
+  function attackBoss() public {
+    uint256 nftTokenIdOfPlayer = nftHolders[msg.sender];
+    CharacterAttributes storage player = nftHolderAttributes[nftTokenIdOfPlayer];
+
+    console.log("\nPlayer /w character %s attacked boss! Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
+    console.log("Boss %s has %s HP and %s AD", bigBoss.name, bigBoss.hp, bigBoss.attackDamage);
+
+    require(player.hp > 0, "Player has no health points left!");
+    require(bigBoss.hp > 0, "Boss has no health points left!");
+
+    if (bigBoss.hp < player.attackDamage) {
+      bigBoss.hp = 0;
+    } else {
+      bigBoss.hp -= player.attackDamage;
+    }
+
+    if (player.hp < bigBoss.attackDamage) {
+      player.hp = 0;
+    } else {
+      player.hp -= bigBoss.attackDamage;
+    }
+
+    console.log("Boss attacked player. Player has %s HP left", player.hp);
+  }
 }

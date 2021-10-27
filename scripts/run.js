@@ -35,6 +35,15 @@ const main = async () => {
   await txn.wait();
   console.log(`Minted character NFT for player 3`);
 
+  txn = await gameContract.attackBoss();
+  await txn.wait();
+
+  txn = await gameContract.attackBoss();
+  await txn.wait();
+
+  txn = await gameContract.attackBoss();
+  await txn.wait();
+
   console.log(`Done deploying and minting!`);
 };
 
