@@ -38,12 +38,6 @@ const main = async () => {
   txn = await gameContract.attackBoss();
   await txn.wait();
 
-  txn = await gameContract.attackBoss();
-  await txn.wait();
-
-  txn = await gameContract.attackBoss();
-  await txn.wait();
-
   console.log(`Done deploying and minting!`);
 };
 
