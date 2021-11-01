@@ -21,7 +21,11 @@ module.exports = {
   solidity: "0.8.4",
   networks: {
     rinkeby: {
-      url: process.env.NETWORK_URL,
+      url: process.env.STAGING_NETWORK_URL,
+      accounts: [process.env.PRIVATE_ACCOUNT_KEY],
+    },
+    mainnet: {
+      url: process.env.PROD_NETWORK_URL,
       accounts: [process.env.PRIVATE_ACCOUNT_KEY],
     },
   },
